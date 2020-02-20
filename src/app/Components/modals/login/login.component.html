@@ -1,0 +1,59 @@
+
+<div id="overlay">
+
+    <article class="card-body mx-auto h-100 d-flex flex-column justify-content-center">
+        
+        <form class="shadow p-4 mb-5 bg-dark rounded position-relative"     
+                    [formGroup]="userDataForm"
+                    (ngSubmit)="submitUserForm(userDataForm.value)">
+                    <span id="close" (click)="onCancelClick()"><a>x</a></span>
+            <div class="form-group text-white">
+                <p class="text-center title" > <strong>LOGIN</strong> </p>
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                </div>
+                <mat-form-field
+                class="input-field"
+                [hideRequiredMarker]="false">
+                <mat-label>Double click me</mat-label>
+                <input
+                  matInput
+                  formControlName="usuario"
+                  placeholder="usuario"
+                  required>
+                <mat-error *ngIf="userDataForm.get('usuario')?.invalid" class="text-danger">
+                  El campo <strong>usuario</strong> es requerido
+                </mat-error>
+              </mat-form-field>
+            </div>    
+        
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+            </div>
+            <mat-form-field
+            class="input-field"
+            [hideRequiredMarker]="false">
+            <input
+              matInput
+              formControlName="contraseña"
+              placeholder="contraseña"
+              required>
+            <mat-error *ngIf="userDataForm.get('tipoDoc')?.invalid">
+              El campo <strong>contraseña</strong> es requerido
+            </mat-error>
+          </mat-form-field>
+        </div>
+        
+            <div class="form-group  d-flex flex-row justify-content-center">
+                <button id="send" type="submit" value="login" class="btn bg-white mt-2 px-5"> Ingresar  </button>
+            </div>     
+            <div class="form-group">
+                <p class="text-center"> <a class= "text-white" href="">Olvido su contraseña?</a> </p>  
+            </div>                                                                     
+        </form>
+        </article>
+</div>
+
