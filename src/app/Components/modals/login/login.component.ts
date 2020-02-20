@@ -23,14 +23,17 @@ export class LoginComponent implements OnInit {
   }
   
   submitUserForm(data: any): void {
-    this.ApiService.sendRequestProcess(data)
-    .subscribe((res: any) => {
-                  if(res.message != 'Ok')
-                    alert(res.message );
-                  else
-                    this.dialogRef.close({ username: data.username, login:true });
-                });;
-
+    console.log(data);
+    if(data.usuario && data.contraseña)
+      this.ApiService.sendRequestProcess(data)
+      .subscribe((res: any) => {
+                    if(res.message != 'Ok')
+                      alert(res.message );
+                    else
+                      this.dialogRef.close({ username: data.username, login:true });
+                  },(err)=>{
+                      alert(err.message);
+                  });
   }
 
   onCancelClick(): void {

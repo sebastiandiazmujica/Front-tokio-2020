@@ -1,9 +1,9 @@
 
-<div id="overlay">
+<div id="overlay_">
 
-    <article class="card-body mx-auto h-100 d-flex flex-column justify-content-center">
+    <article class="card-body mx-auto h-100 d-flex flex-column justify-content-center p-0">
         
-        <form class="shadow p-4 mb-5 bg-dark rounded position-relative"     
+        <form class="shadow  bg-dark rounded position-relative p-3"     
                     [formGroup]="userDataForm"
                     (ngSubmit)="submitUserForm(userDataForm.value)">
                     <span id="close" (click)="onCancelClick()"><a>x</a></span>
@@ -11,13 +11,9 @@
                 <p class="text-center title" > <strong>LOGIN</strong> </p>
             </div>
             <div class="form-group input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                </div>
                 <mat-form-field
-                class="input-field"
+                class="input-field w-100"
                 [hideRequiredMarker]="false">
-                <mat-label>Double click me</mat-label>
                 <input
                   matInput
                   formControlName="usuario"
@@ -30,18 +26,15 @@
             </div>    
         
         <div class="form-group input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-            </div>
             <mat-form-field
-            class="input-field"
+            class="input-field w-100"
             [hideRequiredMarker]="false">
             <input
               matInput
               formControlName="contraseña"
               placeholder="contraseña"
               required>
-            <mat-error *ngIf="userDataForm.get('tipoDoc')?.invalid">
+            <mat-error *ngIf="userDataForm.get('contraseña')?.invalid">
               El campo <strong>contraseña</strong> es requerido
             </mat-error>
           </mat-form-field>
