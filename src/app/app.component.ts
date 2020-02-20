@@ -17,13 +17,22 @@ export class AppComponent {
   }
 
   OpenLogin():void{
-   this.ModalServiceService.LoginDialog({title:"",description:""}).afterClosed().subscribe((res:{username:string,login:boolean})=>
-     {
+   this.ModalServiceService.LoginDialog({title:"",description:""}).afterClosed().subscribe((res:any)=>
+     {  console.log(res)
         this.username=res.username;
         this.isLogueado=res.login;
      }
     );
   }
+
+  OpenRegister():void{
+    this.ModalServiceService.RegisterDialog({title:"",description:""}).afterClosed().subscribe((res:{username:string,login:boolean})=>
+      {
+         this.username=res.username;
+         this.isLogueado=res.login;
+      }
+     );
+   }
 }
 
 

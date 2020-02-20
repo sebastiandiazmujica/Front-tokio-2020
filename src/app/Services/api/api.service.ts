@@ -15,12 +15,25 @@ export class ApiService {
     });
   }
 
-  sendRequestProcess(data: any):any {
+  sendRequestLogin(data: any):any {
     const requestData = {
       username: data.usuario,
       password: data.contraseña
     };
 
-    return this.http.post('http://127.0.0.1:8000/loginUser/', requestData, {headers: this.headers});
+    return this.http.post('https://colombia-tokio-grupo4.herokuapp.com/loginUser/', requestData, {headers: this.headers});
+  }
+
+
+  sendRequestRegister(data: any):any {
+    const requestData = {
+      username: data.username,
+      password: data.password,
+      first_name: data.first_name,
+      last_name: data.last_name,
+      email: data.email,
+    };
+
+    return this.http.post('https://colombia-tokio-grupo4.herokuapp.com/addUser/', requestData, {headers: this.headers});
   }
 }

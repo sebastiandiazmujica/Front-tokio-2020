@@ -1,6 +1,4 @@
 
-<div id="overlay_">
-
     <article class="card-body mx-auto h-100 d-flex flex-column justify-content-center p-0">
         
         <form class="shadow  bg-dark rounded position-relative p-3"     
@@ -12,17 +10,17 @@
             </div>
             <div class="form-group input-group">
                 <mat-form-field
-                class="input-field w-100"
-                [hideRequiredMarker]="false">
-                <input
-                  matInput
-                  formControlName="usuario"
-                  placeholder="usuario"
-                  required>
-                <mat-error *ngIf="userDataForm.get('usuario')?.invalid" class="text-danger">
-                  El campo <strong>usuario</strong> es requerido
-                </mat-error>
-              </mat-form-field>
+                  class="input-field w-100"
+                  [hideRequiredMarker]="false">
+                  <input
+                    matInput
+                    formControlName="usuario"
+                    placeholder="usuario"
+                    required>
+                  <mat-error *ngIf="userDataForm.get('usuario')?.invalid" class="text-danger">
+                    El campo <strong>usuario</strong> es requerido
+                  </mat-error>
+                </mat-form-field>
             </div>    
         
         <div class="form-group input-group">
@@ -31,6 +29,7 @@
             [hideRequiredMarker]="false">
             <input
               matInput
+              type="password"
               formControlName="contraseña"
               placeholder="contraseña"
               required>
@@ -48,5 +47,3 @@
             </div>                                                                     
         </form>
         </article>
-</div>
-

@@ -25,12 +25,12 @@ export class LoginComponent implements OnInit {
   submitUserForm(data: any): void {
     console.log(data);
     if(data.usuario && data.contraseña)
-      this.ApiService.sendRequestProcess(data)
+      this.ApiService.sendRequestLogin(data)
       .subscribe((res: any) => {
-                    if(res.message != 'Ok')
+                    if(res.message != 'ok')
                       alert(res.message );
                     else
-                      this.dialogRef.close({ username: data.username, login:true });
+                      this.dialogRef.close({ username: data.usuario, login:true });
                   },(err)=>{
                       alert(err.message);
                   });

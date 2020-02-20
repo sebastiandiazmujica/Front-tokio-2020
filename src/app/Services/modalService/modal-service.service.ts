@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material';
 import { LoginComponent} from '../../Components/modals/login/login.component';
+import { RegisterComponent} from '../../Components/modals/register/register.component';
 
 /**
  * Servicio dedicado a controlar modales globales
@@ -35,6 +36,16 @@ export class ModalServiceService {
 
   LoginDialog({ title, description }: { title?: string; description?: string; } = {}) {
     return this.dialog.open(LoginComponent, {
+      data: {
+        type: "",
+        title,
+        description
+      }
+    });
+  }
+
+  RegisterDialog({ title, description }: { title?: string; description?: string; } = {}) {
+    return this.dialog.open(RegisterComponent, {
       data: {
         type: "",
         title,

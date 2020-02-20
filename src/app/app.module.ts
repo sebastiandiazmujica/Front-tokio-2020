@@ -7,9 +7,9 @@ import { LoginComponent } from './Components/modals/login/login.component';
 import { RegisterComponent } from './Components/modals/register/register.component';
 import { FormsModule, ReactiveFormsModule }         from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatFormFieldModule,MatInputModule} from '@angular/material';
+import {  MatFormFieldModule,MatInputModule} from '@angular/material';
 import { HttpClientModule} from "@angular/common/http";
-import {MatDialogModule} from '@angular/material/dialog';
+import {  MatDialogModule} from '@angular/material/dialog';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
@@ -30,7 +30,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     MatDialogModule,
     AngularFontAwesomeModule
   ],
-  entryComponents: [LoginComponent],
+  entryComponents: [LoginComponent,RegisterComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

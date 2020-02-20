@@ -1,1 +1,114 @@
-<p>register works!</p>
+<article class="card-body mx-auto h-100 d-flex flex-column justify-content-center p-0">
+    <form class="shadow p-3  bg-dark rounded"                     
+          [formGroup]="userDataForm"
+          (ngSubmit)="submitUserForm(userDataForm.value)">
+            <span id="close" (click)="onCancelClick()"><a>x</a></span>
+            <div class="form-group text-white">
+                <p class="text-center title"> <strong>REGISTRO</strong> </p>
+            </div>
+            <div class="form-group input-group">
+                <mat-form-field
+                  class="input-field w-100"
+                  [hideRequiredMarker]="false">
+                  <input
+                    matInput
+                    formControlName="username"
+                    placeholder="Usuario"
+                    required>
+                  <mat-error *ngIf="userDataForm.get('username')?.invalid" class="text-danger">
+                    El campo <strong>usuario</strong> es requerido
+                  </mat-error>
+                </mat-form-field>                
+            </div>
+            <div class="form-group input-group">
+                <mat-form-field
+                class="input-field w-100"
+                [hideRequiredMarker]="false">
+                    <input
+                    matInput
+                    type = "password"
+                    formControlName="password"
+                    placeholder="Crear contraseña"
+                    required>
+                    <mat-error *ngIf="userDataForm.get('password')?.invalid" class="text-danger">
+                    El campo <strong>contraseña</strong> es requerido
+                    </mat-error>
+                 </mat-form-field>  
+            </div>
+
+                <div class="form-group input-group">
+                    <mat-form-field
+                    class="input-field w-100"
+                    [hideRequiredMarker]="false">
+                        <input
+                        matInput
+                        formControlName="repeat_password"
+                        type = "password"
+                        placeholder="Repetir contraseña"
+                        required>
+                        <mat-error *ngIf="userDataForm.get('repeat_password')?.invalid" class="text-danger">
+                        El campo <strong>contraseña</strong> es requerido
+                        </mat-error>
+                        <mat-error *ngIf="userDataForm.get('repeat_password')?.errors?.mustMatch" class="text-danger">
+                            El campo <strong>contraseña</strong> no coincide
+                            </mat-error>
+                    </mat-form-field>  
+                </div>
+
+            <div class="form-group input-group">
+                <mat-form-field
+                class="input-field w-100"
+                [hideRequiredMarker]="false">
+                    <input
+                    matInput
+                    formControlName="first_name"
+                    placeholder="Nombre"
+                    required>
+                    <mat-error *ngIf="userDataForm.get('first_name')?.invalid" class="text-danger">
+                    El campo <strong>nombre</strong> es requerido
+                    </mat-error>
+                </mat-form-field>  
+            </div>
+
+            <div class="form-group input-group">
+                <mat-form-field
+                class="input-field w-100"
+                [hideRequiredMarker]="false">
+                    <input
+                    matInput
+                    formControlName="last_name"
+                    placeholder="Apellido"
+                    required>
+                    <mat-error *ngIf="userDataForm.get('last_name')?.invalid" class="text-danger">
+                    El campo <strong>apeliido</strong> es requerido
+                    </mat-error>
+                </mat-form-field>  
+            </div>
+
+            <div class="form-group input-group">
+                <mat-form-field
+                class="input-field w-100"
+                [hideRequiredMarker]="false">
+                    <input
+                    matInput
+                    formControlName="email"
+                    placeholder="Correo electrónico"
+                    required>
+                    <mat-error *ngIf="userDataForm.get('email')?.invalid" class="text-danger">
+                    El campo <strong>email</strong> no es correcto
+                    </mat-error>
+                </mat-form-field>  
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="bg-white btn ml-1 mt-4 px-5"> Registrar </button>
+                <button type="reset" class="btn btn-danger float-right mr-1 mt-4 px-5" (click)="onCancelClick()"> Cancelar
+                </button>
+            </div>
+
+            <div class="form-group text-white">
+                <p class="text-center">Tienes una cuenta? <strong><a class="text-white" href="../login/"
+                            id='login'>Logueate</a></strong> </p>
+            </div>
+    </form>
+</article>
