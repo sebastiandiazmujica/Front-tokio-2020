@@ -11,12 +11,14 @@ import {  MatFormFieldModule,MatInputModule} from '@angular/material';
 import { HttpClientModule} from "@angular/common/http";
 import {  MatDialogModule} from '@angular/material/dialog';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { HeaderComponent } from './Components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
