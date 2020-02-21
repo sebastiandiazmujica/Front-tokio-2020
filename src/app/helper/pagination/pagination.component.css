@@ -1,0 +1,8 @@
+
+.pagination__prev:hover{
+ cursor: pointer;
+}
+
+.pagination__next:hover{
+    cursor: pointer;
+}

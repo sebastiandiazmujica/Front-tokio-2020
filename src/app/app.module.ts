@@ -12,13 +12,17 @@ import { HttpClientModule} from "@angular/common/http";
 import {  MatDialogModule} from '@angular/material/dialog';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { HeaderComponent } from './Components/header/header.component';
+import { DeportistasComponent } from './Components/pages/deportistas/deportistas.component';
+import { PaginationComponent } from './helper/pagination/pagination.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HeaderComponent
+    HeaderComponent,
+    DeportistasComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
