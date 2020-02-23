@@ -1,7 +1,8 @@
 import { Component, OnInit,Inject } from '@angular/core';
-import { FormGroup, FormControl, Validators,ReactiveFormsModule  } from '@angular/forms';
-import {ApiService} from '../../../Services/api/api.service'
+import { FormGroup, FormControl, Validators, ReactiveFormsModule  } from '@angular/forms';
+import {ApiService} from '../../../Services/api/api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import {Globals} from "../../../Globals";
 
 
 @Component({
@@ -11,17 +12,17 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class LoginComponent implements OnInit {
 
-  userDataForm: FormGroup = new FormGroup({                               
+  userDataForm: FormGroup = new FormGroup({
     usuario: new FormControl('',Validators.required),
     contraseña: new FormControl('',Validators.required),
   });
 
   constructor(private ApiService: ApiService ,   private dialogRef: MatDialogRef<LoginComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: { login: boolean }) { }
+    @Inject(MAT_DIALOG_DATA) private data: { login: boolean }, public globals: Globals) { }
 
   ngOnInit() {
   }
-  
+
   submitUserForm(data: any): void {
     console.log(data);
     if(data.usuario && data.contraseña)
@@ -29,8 +30,11 @@ export class LoginComponent implements OnInit {
       .subscribe((res: any) => {
                     if(res.message != 'ok')
                       alert(res.message );
-                    else
+                    else{
+                      this.globals.setUsuario(data.usuario);
                       this.dialogRef.close({ username: data.usuario, login:true });
+                    }
+
                   },(err)=>{
                       alert(err.message);
                   });
