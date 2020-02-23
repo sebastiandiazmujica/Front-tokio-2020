@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-5 centrar">
+            <img id="imagenDeportista" src="assets/{{deportista.foto}}" />
+            <br>
+            <img id="iconoDeporte" src="assets/{{ deportista.icono }}">
+        </div>
+        <div class="col-7 centrar">
+            <h1 id="nombreDeportista">sdf</h1>
+            <h2 id="fechaNacimiento">sdfs</h2>
+            <h4 id="edad">sdf</h4>
+            <h4 id="peso">sdf</h4>
+            <h4 id="estatura">sdf</h4>
+            <h4 id="entrenador">sdfs</h4>
+        </div>
+    </div>
+</div>
+<div class="linea">
+</div>
+<h1>Participaciones</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Hora</th>
+            <th scope="col">Modalidad</th>
+            <th scope="col">Resultado</th>
+            <th scope="col">Video</th>
+        </tr>
+    </thead>
+    <tbody id="table_content" *ngFor= "let participacion of participaciones">
+        <tr>
+            <td>{{participacion.fecha.split(" ")[0]}}</td>
+            <td>{{participacion.fecha.split(" ")[1]}}</td>
+            <td>{{participacion.descripcion}}</td>
+            <td>{{participacion.resultado}}</td>
+            <td>{{participacion.linkVideo}}</td>
+
+        </tr>
+    </tbody>
+</table>
