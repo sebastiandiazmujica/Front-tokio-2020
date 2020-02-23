@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
     contraseña: new FormControl('',Validators.required),
   });
 
-  constructor(private ApiService:ApiService ,   private dialogRef: MatDialogRef<LoginComponent>,
+  constructor(private ApiService: ApiService ,   private dialogRef: MatDialogRef<LoginComponent>,
     @Inject(MAT_DIALOG_DATA) private data: { login: boolean }) { }
 
   ngOnInit() {
