@@ -12,16 +12,17 @@ export class ApiService {
 
 
   deportistas:Deportista[]=[
-  {id: 1, apellido:"lopez",nombre:"felipe",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
-  {id: 2, apellido:"lopez",nombre:"felipe",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
-  {id: 3, apellido:"lopez",nombre:"felipe",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
-  {id: 4, apellido:"lopez",nombre:"felipe",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
-  {id: 5, apellido:"lopez",nombre:"felipe",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
-  {id: 6, apellido:"lopez",nombre:"felipe",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
-  {id: 7, apellido:"lopez",nombre:"felipe",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
-  {id: 8, apellido:"lopez",nombre:"felipe",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
-  {id: 9, apellido:"lopez",nombre:"felipe",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
-  {id: 10, apellido:"lopez",nombre:"felipe",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
+  {id: 1, apellido:"lopez",nombre:"felipe1",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
+  {id: 1, apellido:"lopez",nombre:"felipe1",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
+  {id: 2, apellido:"lopez",nombre:"felipe2",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
+  {id: 3, apellido:"lopez",nombre:"felipe3",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
+  {id: 4, apellido:"lopez",nombre:"felipe4",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
+  {id: 5, apellido:"lopez",nombre:"felipe5",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
+  {id: 6, apellido:"lopez",nombre:"felipe6",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
+  {id: 7, apellido:"lopez",nombre:"felipe7",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
+  {id: 8, apellido:"lopez",nombre:"felipe8",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
+  {id: 9, apellido:"lopez",nombre:"felipe9",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
+  {id: 10, apellido:"lopez",nombre:"felipe10",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
 ];
 
   participaciones: Participacion[] = [
@@ -32,6 +33,20 @@ export class ApiService {
     {id: 10, linkVideo:"ssdfs", deportistaId: 10, descripcion: "dfsdfsd sdf sdfssdf", fecha: "2020-02-09 14:32", resultado: "sfds sdfsd 3"},
 
   ];
+
+  deportes: any [] = [
+    {nombre:"Futbol"},
+    {nombre:"Tenis"},
+    {nombre:"Natacion"},
+  ];
+
+  modalidades: any [] = [
+    {nombreModalidad:"Futbol 11", nombreDeporte: "Futbol"},
+    {nombreModalidad:"Acuática", nombreDeporte: "Gimnasia"},
+    {nombreModalidad:"Futbol 5", nombreDeporte: "Futbol"},
+  ];
+
+
 
 
   private deportistas$ = new BehaviorSubject<Deportista[]>(this.deportistas);
@@ -73,12 +88,28 @@ export class ApiService {
     //return this.http.post('https://colombia-tokio-grupo4.herokuapp.com/addUser/', requestData, {headers: this.headers});
   }
 
+  getDeportistasDeporte(deporte: string){
+    return this.deportistas.filter( item => item.nombre === 'felipe1'); // filtrar para el deporte
+  }
+
+  getDeportistasDeporteModalidad(modalidadItem: any){
+    return this.deportistas.filter( item => item.nombre === 'felipe2'); //filtrar para el deporte y la modalidad
+  }
+
   getDeportista(id: number){
     return this.deportistas.find( item => id == item.id);
   }
 
   getParticipaciones(id: number){
     return this.participaciones;
+  }
+
+  getDeportes(){
+    return this.deportes;
+  }
+
+  getModalidades(nombreDeporte: string){
+    return this.modalidades.filter(item => item.nombreDeporte === nombreDeporte);
   }
 
 

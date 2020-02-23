@@ -1,31 +1,45 @@
 <div class="container centrar">
-    <h3>Deportistas que participarán</h3>
-    
+  <h3 class="mt-3 mb-4">Deportistas que participarán</h3>
 
-    <div class="row justify-content-center">
-   
-      <div class="deportistaContainer" *ngFor="let deportista of deportistas; let i = index">
-          
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-          <div class="row">
-            <img class="imagenDeportista" src="../../../../assets/{{ deportista.foto }}"  alt="" />
-            <h4 class="nombreDeportista">
-              <a [routerLink]="['/deportistas', deportista.id ]">{{deportista.nombre}} {{deportista.apellido}}</a>
-            </h4>
+  <div class="row">
+    <div class="col-2 offset-2 inli d-flex flex-row align-items-center ">
+      <h4><label for="deportes">Deportes </label></h4>
+      <select [(ngModel)]="opcionSeleccionadoDeporte" (change)="capturarDeporte()" >
+        <option value="-1">Todos</option>
+        <option value="{{i}}" *ngFor="let deporte of deportes;index as i" > {{deporte.nombre}} </option>
+      </select>
+    </div>
+    <div class="col-2 offset-2 inli d-flex flex-row align-items-center margenes">
+      <h4><label for="modalidades">Modalidades</label></h4>
+      <select [(ngModel)]="opcionSeleccionadaModalidad" (change)="capturarModalidad()">
+        <option value="{{i}}" *ngFor="let modalidad of modalidades; index as i" > {{modalidad.nombreModalidad}} </option>
+      </select>
+    </div>
+  </div>
+  <div class="row justify-content-center">
 
-          </div>
-          <div class="row centrar d-flex justify-content-center">
-            <div class="">
-              <img class="iconoDeporte" src="../../../../assets/{{ deportista.icono }}" alt="">
-            </div>
+    <div class="deportistaContainer" *ngFor="let deportista of deportistas; let i = index">
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+          <img class="imagenDeportista" src="../../../../assets/{{ deportista.foto }}" alt="" />
+          <h4 class="nombreDeportista">
+            <a [routerLink]="['/deportistas', deportista.id ]">{{deportista.nombre}} {{deportista.apellido}}</a>
+          </h4>
+
+        </div>
+        <div class="row centrar d-flex justify-content-center">
+          <div class="">
+            <img class="iconoDeporte" src="../../../../assets/{{ deportista.icono }}" alt="">
           </div>
         </div>
-            
       </div>
 
     </div>
 
-   <!-- 
+  </div>
+
+  <!-- 
     <div class="row justify-content-center">
       {% if deportistas.has_previous %}
       <a href="?page={{ deportistas.previous_page_number }}">
@@ -42,7 +56,8 @@
       {% endif %}
     </div>-->
 
-    <app-pagination class="d-flex flex-row justify-content-center" (paginaEmitter)="goToPage($event)" [page]="page" [totalPages]="totalPages" [numShops]="numDeportistas"></app-pagination>-
-  </div>
+  <app-pagination class="d-flex flex-row justify-content-center" (paginaEmitter)="goToPage($event)" [page]="page"
+    [totalPages]="totalPages" [numShops]="numDeportistas"></app-pagination>-
+</div>
 
-     <!-- <app-pagination (paginaEmitter)="goToPage($event)" [page]="page" [totalPages]="totalPages" [numShops]="numShops"></app-pagination>-->
+<!-- <app-pagination (paginaEmitter)="goToPage($event)" [page]="page" [totalPages]="totalPages" [numShops]="numShops"></app-pagination>-->

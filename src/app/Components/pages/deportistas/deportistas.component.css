@@ -5,6 +5,15 @@
   h1 {
     color: white;
   }
+
+  h4 {
+    margin-bottom: 0px;
+    margin-right: 5px;
+  }
+
+  .offset-2 {
+    margin-left: 21.666667%;
+}
   
   a{
     color: black;
@@ -81,5 +90,7 @@
       height: 36px;
       margin-bottom: 10px;
     }
+
+
   }
   
