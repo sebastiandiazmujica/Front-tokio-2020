@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material';
 import { LoginComponent} from '../../Components/modals/login/login.component';
 import { RegisterComponent} from '../../Components/modals/register/register.component';
+import {CommentComponent} from "../../Components/modals/comment/comment.component";
 
 /**
  * Servicio dedicado a controlar modales globales
@@ -30,7 +31,7 @@ export class ModalServiceService {
     this.modalNotifier.next({
       modalType,
       data
-    }); 
+    });
   }
 
 
@@ -54,5 +55,16 @@ export class ModalServiceService {
     });
   }
 
- 
+  commentDialog({ idParticipacion, linkVideo }: { idParticipacion?: number; linkVideo?: string; } = {}) {
+    return this.dialog.open(CommentComponent, {
+      data: {
+        type: '',
+        title: '',
+        description: '',
+        linkVideo,
+        idParticipacion,
+      }
+    });
+  }
+
 }

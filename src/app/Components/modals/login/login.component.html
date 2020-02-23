@@ -1,7 +1,7 @@
 
     <article class="card-body mx-auto h-100 d-flex flex-column justify-content-center p-0">
-        
-        <form class="shadow  bg-dark rounded position-relative p-3"     
+
+        <form class="shadow  bg-dark rounded position-relative p-3"
                     [formGroup]="userDataForm"
                     (ngSubmit)="submitUserForm(userDataForm.value)">
                     <span id="close" (click)="onCancelClick()"><a>x</a></span>
@@ -21,8 +21,8 @@
                     El campo <strong>usuario</strong> es requerido
                   </mat-error>
                 </mat-form-field>
-            </div>    
-        
+            </div>
+
         <div class="form-group input-group">
             <mat-form-field
             class="input-field w-100"
@@ -38,12 +38,12 @@
             </mat-error>
           </mat-form-field>
         </div>
-        
+
             <div class="form-group  d-flex flex-row justify-content-center">
                 <button id="send" type="submit" value="login" class="btn bg-white mt-2 px-5"> Ingresar  </button>
-            </div>     
+            </div>
             <div class="form-group">
-                <p class="text-center"> <a class= "text-white" href="">Olvido su contraseña?</a> </p>  
-            </div>                                                                     
+                <p class="text-center"> <a class= "text-white" href="">Olvido su contraseña?</a> </p>
+            </div>
         </form>
         </article>

@@ -1,0 +1,55 @@
+
+#close{
+  position: absolute;;
+  top: 0px;
+  right: 0px;
+  padding-right: 10px;
+}
+
+#close a:hover{
+  cursor: pointer;
+}
+
+#overlay {
+  position: fixed; /* Sit on top of the page content */
+  /* display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /*background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  /* cursor: pointer; /* Add a pointer on hover */
+}
+
+article{
+  min-width: 30vw;
+  position: relative;
+}
+
+.shadow{
+  -webkit-box-shadow: 15px 13px 15px -10px rgba(133,133,133,1);
+  -moz-box-shadow: 15px 13px 15px -10px rgba(133,133,133,1);
+  box-shadow: 15px 13px 15px -10px rgba(133,133,133,1);
+}
+
+.bg-dark{
+  background: linear-gradient(90deg, rgba(0, 128, 255,0.7) 0%, rgba(77, 166, 255,0) 83%)!important;
+  background: -ms-linear-gradient(left, rgba(0, 128, 255,0.7) 0%, rgba(77, 166, 255,0) 83%)!important;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff70b', endColorstr='#f1770b', GradientType=1 )!important;
+}
+
+a{
+  color:white;
+}
+
+.title{
+  font-size: 20px;
+}
+
+.scrollable {
+  height: 500px; 
+  overflow-y: auto;
+}
