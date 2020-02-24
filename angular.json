@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "tokioFront"
+  "defaultProject": "tokioFront",
+  "cli": {
+    "analytics": "de467b53-fbe8-4372-aa31-bf308bd0063e"
+  }
 }
