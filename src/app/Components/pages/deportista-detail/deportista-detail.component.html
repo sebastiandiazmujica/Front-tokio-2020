@@ -1,17 +1,17 @@
 <div class="container-fluid">
-    <div class="row">
+    <div class="row" *ngIf="deportista!=null">
         <div class="col-5 centrar">
-            <img id="imagenDeportista" src="assets/{{deportista.foto}}" />
+            <img id="imagenDeportista" src="../../../../assets/{{ deportista.foto }}" />
             <br>
-            <img id="iconoDeporte" src="assets/{{ deportista.icono }}">
+            <img id="iconoDeporte" src="../../../../assets/{{ deportista.icono }}">
         </div>
         <div class="col-7 centrar">
-            <h1 id="nombreDeportista">sdf</h1>
-            <h2 id="fechaNacimiento">sdfs</h2>
-            <h4 id="edad">sdf</h4>
-            <h4 id="peso">sdf</h4>
-            <h4 id="estatura">sdf</h4>
-            <h4 id="entrenador">sdfs</h4>
+            <h1 id="nombreDeportista">{{ deportista.nombre }} {{ deportista.apellido}}</h1>
+            <h2 id="fechaNacimiento">{{ deportista.fechanacimiento}}</h2>
+            <h4 id="edad">Edad: {{ deportista.edad }}</h4>
+            <h4 id="peso">Peso : {{ deportista.peso }}</h4>
+            <h4 id="estatura">Estatura : {{ deportista.estatura }} cm</h4>
+            <h4 id="entrenador">Entrenador: {{ deportista.nombreentrenador }}</h4>
         </div>
     </div>
 </div>
@@ -34,7 +34,7 @@
             <td>{{participacion.fecha.split(" ")[1]}}</td>
             <td>{{participacion.descripcion}}</td>
             <td>{{participacion.resultado}}</td>
-            <td><a (click)="openComment(participacion.id, participacion.linkVideo)"><img class="camara" src="assets/model/static/images/camera_alt.png" alt=""></a></td>
+            <td><a (click)="openComment(participacion.idParticipacion, participacion.linkVideo)"><img class="camara" src="assets/model/static/images/camera_alt.png" alt=""></a></td>
         </tr>
     </tbody>
 </table>

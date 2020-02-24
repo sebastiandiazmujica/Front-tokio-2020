@@ -22,8 +22,12 @@ export class DeportistaDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe( (params: Params) => {
       const id = params.id;
-      this.deportista = this.apiService.getDeportista(id);
-      this.participaciones = this.apiService.getParticipaciones(id);
+      this.apiService.getDeportista(id).subscribe( rta => {
+        this.deportista = rta[0];
+      });
+      this.apiService.getParticipaciones(id).subscribe( rta => {
+        this.participaciones = rta;
+      });
     });
   }
 
