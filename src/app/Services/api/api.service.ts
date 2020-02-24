@@ -69,7 +69,7 @@ export class ApiService {
   }
 
   getDeportes(){
-    return this.http.get<Deporte[]>("https://colombia-tokio-grupo4.herokuapp.com/allSport");
+    return this.http.get<Deporte[]>('https://colombia-tokio-grupo4.herokuapp.com/allSport');
   }
 
   getModalidades(id: number){
@@ -79,7 +79,7 @@ export class ApiService {
 
   saveComment(data: any): any {
     const requestData = {
-      username: data.usuario,
+      usuario: data.usuario,
       texto: data.texto,
       participacion: data.participacion
     };
@@ -88,9 +88,9 @@ export class ApiService {
   }
 
   getComments(id: number): Observable<Comments[]> {
-    return this.comentarios$.asObservable();
+    // return this.comentarios$.asObservable();
     // TOCA CREAR SERVICIO EN DJANGO PARA TRAER LOS COMENTARIOS
-    // return this.http.post('https://colombia-tokio-grupo4.herokuapp.com/getComments/', requestData, {headers: this.headers});
+     return this.http.get<Comments[]>(`https://colombia-tokio-grupo4.herokuapp.com/comment?id=${id}`);
   }
 
 }

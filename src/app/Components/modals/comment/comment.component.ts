@@ -43,7 +43,10 @@ export class CommentComponent implements OnInit {
             alert(res.message );
           } else {
             alert('Comentario Guardado');
-            this.dialogRef.close({ username: this.globals.getUsuario(), login: false });
+            this.apiService.getComments(data.participacion).subscribe((rta) => {
+              this.comentarios = rta;
+            });
+            // this.dialogRef.close({ username: this.globals.getUsuario(), login: false });
           }
         }, (err) => {
           alert(err.message);
@@ -52,6 +55,7 @@ export class CommentComponent implements OnInit {
       this.onCancelClick();
       alert('Por favor Iniciar Session para poder registrar el comentario');
     }
+
   }
   onCancelClick(): void {
     this.dialogRef.close({ username: '', login: false });
