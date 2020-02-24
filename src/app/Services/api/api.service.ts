@@ -11,46 +11,9 @@ export class ApiService {
   params = new HttpParams();
 
 
-  deportistas:Deportista[]=[
-  {id: 1, apellido:"lopez",nombre:"felipe1",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
-  {id: 1, apellido:"lopez",nombre:"felipe1",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
-  {id: 2, apellido:"lopez",nombre:"felipe2",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
-  {id: 3, apellido:"lopez",nombre:"felipe3",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
-  {id: 4, apellido:"lopez",nombre:"felipe4",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
-  {id: 5, apellido:"lopez",nombre:"felipe5",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
-  {id: 6, apellido:"lopez",nombre:"felipe6",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
-  {id: 7, apellido:"lopez",nombre:"felipe7",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
-  {id: 8, apellido:"lopez",nombre:"felipe8",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
-  {id: 9, apellido:"lopez",nombre:"felipe9",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
-  {id: 10, apellido:"lopez",nombre:"felipe10",foto:"model/static/images/nadador.jpg",icono:"model/static/images/Futbol.png"},
-];
+  deportistas:Deportista[]=[];
 
-  participaciones: Participacion[] = [
-    {id: 10, linkVideo: 'https://www.youtube.com/watch?v=x0CJKvevs2M', deportistaId: 10, descripcion: 'dfsdfsd sdf sdfssdf', fecha: '2020-02-09 14:32', resultado: 'sfds sdfsd 3'},
-    {id: 10, linkVideo: 'https://www.youtube.com/watch?v=x0CJKvevs2M', deportistaId: 10, descripcion: 'dfsdfsd sdf sdfssdf', fecha: '2020-02-09 14:32', resultado: 'sfds sdfsd 3'},
-    {id: 10, linkVideo: 'https://www.youtube.com/watch?v=x0CJKvevs2M', deportistaId: 10, descripcion: 'dfsdfsd sdf sdfssdf', fecha: '2020-02-09 14:32', resultado: 'sfds sdfsd 3'},
-    {id: 10, linkVideo: 'https://www.youtube.com/watch?v=x0CJKvevs2M', deportistaId: 10, descripcion: 'dfsdfsd sdf sdfssdf', fecha: '2020-02-09 14:32', resultado: 'sfds sdfsd 3'},
-    {id: 10, linkVideo: 'https://www.youtube.com/watch?v=x0CJKvevs2M', deportistaId: 10, descripcion: 'dfsdfsd sdf sdfssdf', fecha: '2020-02-09 14:32', resultado: 'sfds sdfsd 3'},
-
-  ];
-
-  deportes: any [] = [
-    {nombre:"Futbol"},
-    {nombre:"Tenis"},
-    {nombre:"Natacion"},
-  ];
-
-  modalidades: any [] = [
-    {nombreModalidad:"Futbol 11", nombreDeporte: "Futbol"},
-    {nombreModalidad:"Acuática", nombreDeporte: "Gimnasia"},
-    {nombreModalidad:"Futbol 5", nombreDeporte: "Futbol"},
-  ];
-
-  comentarios: Comments[] = [
-    {id: 10, texto: 'com1', usuario: '123'},
-    {id: 10, texto: 'com2', usuario: '123'},
-    {id: 10, texto: 'com3', usuario: '123'},
-  ];
+  comentarios: Comments[] = [];
 
 
   private deportistas$ = new BehaviorSubject<Deportista[]>(this.deportistas);
@@ -85,36 +48,33 @@ export class ApiService {
     return this.http.post('https://colombia-tokio-grupo4.herokuapp.com/addUser/', requestData, {headers: this.headers});
   }
 
-  GetDeportistas(): Observable<Deportista[]> {
-
-
-    return this.deportistas$.asObservable();
-    // TOCA CREAR SERVICIO EN DJANGO PARA TRAER LOS DEPORTISTAS
-    // return this.http.post('https://colombia-tokio-grupo4.herokuapp.com/addUser/', requestData, {headers: this.headers});
-  }
-
-  getDeportistasDeporte(deporte: string){
-    return this.deportistas.filter( item => item.nombre === 'felipe1'); // filtrar para el deporte
-  }
-
-  getDeportistasDeporteModalidad(modalidadItem: any){
-    return this.deportistas.filter( item => item.nombre === 'felipe2'); //filtrar para el deporte y la modalidad
+  GetDeportistas(){
+    return this.http.get<Deportista[]>('https://colombia-tokio-grupo4.herokuapp.com/allInfo');
   }
 
   getDeportista(id: number){
-    return this.deportistas.find( item => id == item.id);
+    return this.http.get<Deportista>(`https://colombia-tokio-grupo4.herokuapp.com/infoSportman?id=${id}`);
+  }
+
+  getDeportistasDeporte(){
+    return this.http.get<Deportista[]>('https://colombia-tokio-grupo4.herokuapp.com/allInfo');
+  }
+
+  getDeportistasDeporteModalidad(){
+    return this.http.get<Deportista[]>('https://colombia-tokio-grupo4.herokuapp.com/allInfo');
   }
 
   getParticipaciones(id: number) {
-    return this.participaciones;
+    return this.http.get<Participacion[]>(`https://colombia-tokio-grupo4.herokuapp.com/infoParticipation?id=${id}`);
   }
 
   getDeportes(){
-    return this.deportes;
+    return this.http.get<Deporte[]>("https://colombia-tokio-grupo4.herokuapp.com/allSport");
   }
 
-  getModalidades(nombreDeporte: string){
-    return this.modalidades.filter(item => item.nombreDeporte === nombreDeporte);
+  getModalidades(id: number){
+    return this.http.get<Modalidad[]>(`https://colombia-tokio-grupo4.herokuapp.com/allMode?idDeporte=${id}`);
+    ;
   }
 
   saveComment(data: any): any {
@@ -136,26 +96,29 @@ export class ApiService {
 }
 
 export interface Deportista {
-  id: number;
+  idDeportista: number;
   nombre: string;
   apellido: string;
-  // edad: number;
-  // peso: number;
-  // estatura: number;
+  edad: number;
+  peso: number;
+  estatura: number;
   foto: string;
+  fechanacimiento: string;
+  ciudad: string;
+  pais: string;
+  nombreentrenador: string;
+  apellidoentrenador: string;
+  nombredelegacion: string;
   icono: string;
-  // fechaNacimiento: string;
-  // ciudad: string;
-  // pais: string;
-  // nombreEntrenador: string;
-  // apellidoEntrenador: string;
-  // nombreDelegacion: string;
+  deporte: string;
+  modalidadDeporte: string;
+
 }
 
 export interface Participacion {
-  id: number;
+  idParticipacion: number;
   linkVideo: string;
-  deportistaId: number;
+  deportista_id: number;
   descripcion: string;
   fecha: string;
   resultado: string;
@@ -165,4 +128,16 @@ export interface Comments {
   id: number;
   texto: string;
   usuario: string;
+}
+
+export interface Deporte{
+  idDeporte: number;
+  nombreDeporte: string;
+}
+
+export interface Modalidad{
+  idModalidadDeporte: number;
+  nombreModalidad: string;
+  idDeporte: number;
+  nombreDeporte: string;
 }

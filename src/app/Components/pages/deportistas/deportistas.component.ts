@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService, Deportista } from '../../../Services/api/api.service';
+import { ApiService, Deportista, Deporte, Modalidad } from '../../../Services/api/api.service';
 
 @Component({
   selector: 'app-deportistas',
@@ -14,8 +14,8 @@ export class DeportistasComponent implements OnInit {
   public numDeportistas: number; //Total de tiendas existentes
   private numResults: number = 10;
   deportistas: Deportista[];
-  deportes: any[];
-  modalidades: any[];
+  deportes: Deporte[];
+  modalidades: Modalidad[];
 
   opcionSeleccionadoDeporte = -1;
 
@@ -44,20 +44,27 @@ export class DeportistasComponent implements OnInit {
   }
 
   getDeportes() {
-    this.deportes = this.apiservice.getDeportes();
+    this.apiservice.getDeportes().subscribe( rta => {
+      this.deportes = rta;
+    })
   }
 
   getDeportistasDeporte(deporte: string) {
-    this.deportistas = this.apiservice.getDeportistasDeporte(deporte);
+    this.apiservice.getDeportistasDeporte().subscribe(rta => {
+      const prueba = rta.filter( item => item.deporte === deporte);
+      this.deportistas = prueba;
+    });
   }
 
   capturarDeporte() {
     if (this.opcionSeleccionadoDeporte != -1) {
-      this.modalidades = this.apiservice.getModalidades(this.deportes[this.opcionSeleccionadoDeporte].nombre);
-      this.getDeportistasDeporte(this.deportes[this.opcionSeleccionadoDeporte].nombre);
-      if (this.modalidades.length === 0) {
-        this.modalidades = [];
-      }
+      this.apiservice.getModalidades(this.deportes[this.opcionSeleccionadoDeporte].idDeporte).subscribe( rta => {
+        this.modalidades = rta;
+      });
+      this.getDeportistasDeporte(this.deportes[this.opcionSeleccionadoDeporte].nombreDeporte);
+      // if (this.modalidades.length === 0) {
+        // this.modalidades = [];
+      // }
     }
     if (this.opcionSeleccionadoDeporte == -1) {
       this.getDeportistasByPage(this.page);
@@ -68,8 +75,14 @@ export class DeportistasComponent implements OnInit {
 
   capturarModalidad() {
     if (this.opcionSeleccionadaModalidad != -1) {
-      this.deportistas = this.apiservice.getDeportistasDeporteModalidad(this.modalidades[this.opcionSeleccionadaModalidad])
-    }
+      let modalidadNombre: string = this.modalidades[this.opcionSeleccionadaModalidad].nombreModalidad;
+      let deporteNombre: string = this.deportes[this.opcionSeleccionadoDeporte].nombreDeporte;
+
+      this.apiservice.getDeportistasDeporte().subscribe(rta => {
+        const prueba = rta.filter( item => item.modalidadDeporte === modalidadNombre && item.deporte === deporteNombre);
+        this.deportistas = prueba;
+      });
+    };
   }
 
 
